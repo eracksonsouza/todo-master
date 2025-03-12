@@ -1,15 +1,15 @@
-import SideBar from "./components/SideBar"
-
+import SideBar from "./components/SideBar";
+import Tasks from "./components/Tasks";
 
 function App() {
-
   return (
     <>
-      <h1 className="p-6 underline mt-2">Hello</h1>
-      <SideBar />
-      <h1>teste</h1>
+      <div className="flex gap-9">
+        <SideBar />
+        <Tasks />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
