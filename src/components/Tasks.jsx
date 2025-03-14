@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "./Button";
-import AddIcon from "../assets/icons/add.png";
-import TrashIcon from "../assets/icons/trash-2.png";
+import AddIcon from "../assets/icons/add.svg?react";
+import TrashIcon from "../assets/icons/trash.svg?react";
+import SunIcon from "../assets/icons/sun.svg?react";
+import CloudSon from "../assets/icons/cloud-sun.svg?react";
+import MoonIcon from "../assets/icons/moon.svg?react";
 
 const Tasks = () => {
   return (
@@ -17,13 +20,42 @@ const Tasks = () => {
         <div className="flex items-center gap-3">
           <Button variant="ghost">
             Limpar Tarefas
-            <img src={TrashIcon} alt="" />
+            <TrashIcon />
           </Button>
 
           <Button>
             Adicionar Tarefa
-            <img src={AddIcon} alt="Adicionar Tarefa" />
+            <AddIcon />
           </Button>
+        </div>
+      </div>
+
+      {/* lista de tarefas */}
+
+      <div className="rounded-xl bg-white p-6">
+        {/* Manhã */}
+
+        <div className="space-y-3">
+          <div className="flex gap-2 pb-1 border-b-2 border-solid border-[#f4f4f5]">
+            <SunIcon />
+            <p className="text-[#9a9c9f] text-sm">Manhã</p>
+          </div>
+        </div>
+
+        {/* Tarde  */}
+        <div className="space-y-3 my-6">
+          <div className="flex gap-2 pb-1 border-b-2 border-solid border-[#f4f4f5]">
+            <CloudSon />
+            <p className="text-[#9a9c9f] text-sm">Tarde</p>
+          </div>
+        </div>
+
+        {/* Noite  */}
+        <div className="space-y-3">
+          <div className="flex gap-2 pb-1 border-b-2 border-solid border-[#f4f4f5]">
+            <MoonIcon />
+            <p className="text-[#9a9c9f] text-sm">Noite</p>
+          </div>
         </div>
       </div>
     </div>
