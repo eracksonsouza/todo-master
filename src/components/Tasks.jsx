@@ -16,7 +16,31 @@ const Tasks = () => {
 
   const afternoonTasks = tasks.filter((tasks) => tasks.time === "afternoon");
 
-  const nightTasks = tasks.filter((tasks)=> tasks.time === "evening");
+  const nightTasks = tasks.filter((tasks) => tasks.time === "evening");
+
+  const handleTaskCheckedBoxClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id !== taskId) {
+        return task;
+      }
+
+      if (task.status === "not_started") {
+        return { ...task, status: "in_progress" };
+      }
+
+      if (task.status === "in_progress") {
+        return { ...task, status: "done" };
+      }
+
+      if (task.status === "done") {
+        return { ...task, status: "not_started" };
+      }
+
+      return task;
+    });
+
+    setTasks(newTasks);
+  };
 
   return (
     <div className="w-full px-8 py-16">
@@ -46,17 +70,25 @@ const Tasks = () => {
           <TasksSeparator title="Manhã" icon={<SunIcon />} />
 
           {/* tarefas de manha */}
-          { morningTasks.map((task)=> (
-            <TaskItem key={task.id} task={task}/>
-          )) }
+          {morningTasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckedBoxClick={handleTaskCheckedBoxClick}
+            />
+          ))}
         </div>
 
         <div className="space-y-3 my-6">
           <TasksSeparator title="Tarde" icon={<CloudSon />} />
 
           {/* tarefas de tarde */}
-          { afternoonTasks.map((task) => (
-            <TaskItem key={task.id} task={task}/>
+          {afternoonTasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckedBoxClick={handleTaskCheckedBoxClick}
+            />
           ))}
         </div>
 
@@ -64,8 +96,12 @@ const Tasks = () => {
           <TasksSeparator title="Noite" icon={<MoonIcon />} />
 
           {/* tarefas de noite */}
-          { nightTasks.map((task) => (
-            <TaskItem key={task.id} task={task}/>
+          {nightTasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckedBoxClick={handleTaskCheckedBoxClick}
+            />
           ))}
         </div>
       </div>
