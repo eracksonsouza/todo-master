@@ -4,7 +4,7 @@ import TaskIcons from "../assets/icons/tasks.svg?react";
 
 const SideBar = () => {
   return (
-    <div className="h-screen bg-green-50 w-[272px]">
+    <div className="h-screen bg-green-50 w-72px">
       <div className="px-8 py-6 space-y-4">
         <h1 className="text-xl font-semibold text-[#00ADB5] ">Task Manager</h1>
         <p>
