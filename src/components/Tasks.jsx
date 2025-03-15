@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Button from "./Button";
-import AddIcon from "../assets/icons/add.svg?react";
-import TrashIcon from "../assets/icons/trash.svg?react";
-import SunIcon from "../assets/icons/sun.svg?react";
-import CloudSon from "../assets/icons/cloud-sun.svg?react";
-import MoonIcon from "../assets/icons/moon.svg?react";
+import {
+  TrashIcon,
+  AddIcon,
+  SunIcon,
+  CloudSon,
+  MoonIcon,
+} from "../assets/icons";
 import TasksSeparator from "./TasksSeparator";
 import { TASKS } from "./constants/tasks";
 import TaskItem from "./TaskItem";
@@ -22,7 +24,7 @@ const Tasks = () => {
   const handleTaskDeleteClick = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
-    toast.success("Tarefa deletada com sucesso")
+    toast.success("Tarefa deletada com sucesso");
   };
 
   const handleTaskCheckedBoxClick = (taskId) => {
@@ -32,17 +34,17 @@ const Tasks = () => {
       }
 
       if (task.status === "not_started") {
-        toast.success("Tarefa iniciada com sucesso")
+        toast.success("Tarefa iniciada com sucesso");
         return { ...task, status: "in_progress" };
       }
 
       if (task.status === "in_progress") {
-        toast.success("Tarefa concluida com sucesso")
+        toast.success("Tarefa concluida com sucesso");
         return { ...task, status: "done" };
       }
 
       if (task.status === "done") {
-        toast.success("Tarefa reiniciada")
+        toast.success("Tarefa reiniciada");
         return { ...task, status: "not_started" };
       }
 

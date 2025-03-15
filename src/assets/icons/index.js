@@ -2,7 +2,7 @@ import AddIcon from "./add.svg?react"
 import ArrowLeftIcon from "./arrow-left.svg?react"
 import CheckIcon from "./check.svg?react"
 import ChevronRightIcon from "./chevron-right.svg?react"
-import CloudSunIcon from "./cloud-sun.svg?react"
+import CloudSon from "./cloud-sun.svg?react"
 import DetailsIcon from "./details.svg?react"
 import GlassWaterIcon from "./glass-water.svg?react"
 import HomeIcon from "./home.svg?react"
@@ -18,7 +18,7 @@ export {
   ArrowLeftIcon,
   CheckIcon,
   ChevronRightIcon,
-  CloudSunIcon,
+  CloudSon,
   DetailsIcon,
   GlassWaterIcon,
   HomeIcon,
