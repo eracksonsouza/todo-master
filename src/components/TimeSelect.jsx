@@ -9,7 +9,7 @@ const TimeSelect = (props) => {
         className="px-4 py-3 border-solid border border-[#ECECEC] rounded-lg placeholder:text-sm placeholder:text-[#9c9e9f] outline-[#00ADB5]"
         {...props}
       >
-        <option value="morning">Manha</option>
+        <option value="morning">Manhã</option>
         <option value="afternoon">Tarde</option>
         <option value="evening">Noite</option>
       </select>

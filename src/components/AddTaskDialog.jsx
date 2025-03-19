@@ -2,11 +2,12 @@ import { createPortal } from "react-dom";
 import Input from "./Input";
 import Button from "./Button";
 import { CSSTransition } from "react-transition-group";
-import { v4 } from "uuid"
+import { v4 } from "uuid";
 import { useEffect, useRef } from "react";
 import "./AddTaskDialog.css";
 import TimeSelect from "./TimeSelect";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [title, setTitle] = useState();
@@ -21,9 +22,16 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
       setTime("");
       setDescription("");
     }
-    
   }, [isOpen]);
   const handleSaveClick = () => {
+    if (!title.trim() || !description.trim()) {
+      return toast.error("Preencha todos os campos", {
+        style: {
+          backgroundColor: "#FF0000",
+          color: "#FFFFFF",
+        },
+      });
+    }
     handleSubmit({
       id: v4(),
       title,
