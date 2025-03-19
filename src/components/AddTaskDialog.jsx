@@ -3,18 +3,26 @@ import Input from "./Input";
 import Button from "./Button";
 import { CSSTransition } from "react-transition-group";
 import { v4 } from "uuid"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./AddTaskDialog.css";
 import TimeSelect from "./TimeSelect";
 import { useState } from "react";
 
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [title, setTitle] = useState();
-  const [time, setTime] = useState();
+  const [time, setTime] = useState("morning");
   const [description, setDescription] = useState();
 
   const nodeRef = useRef(); //useRef serve para criar uma referencia para o componente AddTaskDialog
 
+  useEffect(() => {
+    if (!isOpen) {
+      setTitle("");
+      setTime("");
+      setDescription("");
+    }
+    
+  }, [isOpen]);
   const handleSaveClick = () => {
     handleSubmit({
       id: v4(),
