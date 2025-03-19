@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import Input from "./Input";
 import Button from "./Button";
 import { CSSTransition } from "react-transition-group";
+import { v4 } from "uuid"
 import { useRef } from "react";
 import "./AddTaskDialog.css";
 import TimeSelect from "./TimeSelect";
@@ -13,6 +14,17 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [description, setDescription] = useState();
 
   const nodeRef = useRef(); //useRef serve para criar uma referencia para o componente AddTaskDialog
+
+  const handleSaveClick = () => {
+    handleSubmit({
+      id: v4(),
+      title,
+      time,
+      description,
+      status: "not_started",
+    });
+    handleClose();
+  };
 
   //o createPortal foi utilizado para igualar o componente AddTaskDialog junto com a div root
   //ele vai ser renderizado onde a gente colocar como segundo parametro
@@ -48,7 +60,10 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   onChange={(event) => setTitle(event.target.value)}
                 />
 
-                <TimeSelect value={time} onChange={(event) => setTime(event.target.value)} />
+                <TimeSelect
+                  value={time}
+                  onChange={(event) => setTime(event.target.value)}
+                />
 
                 <Input
                   id="description"
@@ -69,15 +84,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   <Button
                     size="large"
                     className="w-full"
-                    onClick={() =>
-                      handleSubmit({
-                        id: Math.random(),
-                        title,
-                        time,
-                        description,
-                        status: "not_started",
-                      })
-                    }
+                    onClick={handleSaveClick}
                   >
                     Salvar
                   </Button>
